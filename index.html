@@ -7,7 +7,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #430bb4; /* Flat night color */
+      background-color: #430bb4; /* Purple night */
       font-family: 'Comic Sans MS', cursive;
       display: flex;
       flex-direction: column;
@@ -18,21 +18,19 @@
     }
 
     .bubble {
-      /* Removed background, padding, border, and shadow */
       animation: float 6s ease-in-out infinite;
       text-align: center;
     }
 
     h1 {
       font-size: 3em;
-      color: #d6c9ff; /* Soft lavender */
-      text-shadow: none;
+      color: #d6c9ff;
       margin: 0;
     }
 
     p {
       font-size: 1.2em;
-      color: #eeeeee; /* Light gray for better contrast */
+      color: #eeeeee;
       margin: 10px 0 20px;
     }
 
@@ -40,7 +38,6 @@
       width: 700px;
       transition: transform 0.4s ease;
       border-radius: 20px;
-      box-shadow: none;
     }
 
     .meowl-img:hover {
@@ -56,7 +53,7 @@
       50% { transform: translateY(-20px); }
     }
 
-  .sparkle {
+    .sparkle {
       position: absolute;
       width: 8px;
       height: 8px;
@@ -65,6 +62,7 @@
       box-shadow: 0 0 10px #fff;
       animation: twinkle 1.5s infinite ease-in-out;
     }
+
     @keyframes twinkle {
       0%, 100% { opacity: 0.2; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.5); }
@@ -78,7 +76,6 @@
     <img src="meowl.jpg" class="meowl-img" alt="Meowl" />
   </div>
 
-  <!-- Sparkles -->
   <script>
     for (let i = 0; i < 50; i++) {
       const sparkle = document.createElement('div');
