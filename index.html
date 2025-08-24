@@ -2,85 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meowl</title>
+  <title>meowl.cat</title>
   <style>
     body {
       margin: 0;
-      background: #0a0a0a;
+      padding: 0;
+      background-color: #430bb4; /* Flat night color */
       font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       overflow: hidden;
     }
 
     .bubble {
-      position: absolute;
-      bottom: 120px;
-      right: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-      padding: 10px 15px;
-      border-radius: 20px;
-      font-size: 18px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      /* Removed background, padding, border, and shadow */
+      animation: float 6s ease-in-out infinite;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #d6c9ff; /* Soft lavender */
+      text-shadow: none;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #eeeeee; /* Light gray for better contrast */
+      margin: 10px 0 20px;
     }
 
     .meowl-img {
-      position: absolute;
-      bottom: 60px;
-      right: 30px;
-      width: 180px;
-      transition: transform 0.3s ease;
+      width: 700px;
+      transition: transform 0.4s ease;
+      border-radius: 20px;
+      box-shadow: none;
     }
 
-    /* Hover pulse effect */
     .meowl-img:hover {
-      animation: pulseWide 0.6s infinite alternate;
+      transform: scaleX(1.2) scaleY(0.8);
     }
 
-    @keyframes pulseWide {
-      from {
-        transform: scaleX(1);
-      }
-      to {
-        transform: scaleX(1.2);
-      }
+    .meowl-img:active {
+      transform: scaleX(0.8) scaleY(1.2);
     }
 
-    /* Jiggle animation */
-    @keyframes jiggleUpDown {
-      0%   { transform: translateY(0); }
-      25%  { transform: translateY(-5px); }
-      50%  { transform: translateY(5px); }
-      75%  { transform: translateY(-3px); }
-      100% { transform: translateY(0); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
-    .jiggle {
-      animation: jiggleUpDown 0.4s ease;
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+      animation: twinkle 1.5s infinite ease-in-out;
     }
 
-    .tall {
-      transform: scaleY(1.5);
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
     }
   </style>
 </head>
 <body>
-  <div class="bubble">Meowl is watching you 👀</div>
-  <img src="meowl.png" alt="Meowl" class="meowl-img" />
+  <div class="bubble">
+    <h1>Meowl.cat</h1>
+    <p>meowl but awesome i think</p>
+    <img src="meowl.jpg" class="meowl-img" alt="Meowl" />
+  </div>
 
+  <!-- Sparkles -->
   <script>
-    const meowl = document.querySelector('.meowl-img');
-
-    meowl.addEventListener('click', () => {
-      meowl.classList.remove('tall'); // Reset if already tall
-      meowl.classList.add('jiggle');
-
-      // After jiggle ends, stretch tall
-      setTimeout(() => {
-        meowl.classList.remove('jiggle');
-        meowl.classList.add('tall');
-      }, 400);
-    });
+    for (let i = 0; i < 50; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.top = `${Math.random() * 100}vh`;
+      sparkle.style.left = `${Math.random() * 100}vw`;
+      sparkle.style.animationDelay = `${Math.random() * 2}s`;
+      document.body.appendChild(sparkle);
+    }
   </script>
 </body>
 </html>
