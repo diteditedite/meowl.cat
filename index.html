@@ -56,15 +56,28 @@
       50% { transform: translateY(-20px); }
     }
 
-    .sparkle {
+  .sparkle {
   position: absolute;
   width: 12px;
   height: 12px;
   background: white;
+  box-shadow: 0 0 10px #fff;
   animation: twinkle 1.5s infinite ease-in-out;
-  clip-path: path('M10 30 A20 20 0 0 1 50 30 Q50 60 25 90 Q0 60 0 30 A20 20 0 0 1 10 30 Z');
+  clip-path: polygon(
+    50% 0%,
+    61% 7%,
+    68% 18%,
+    70% 30%,
+    68% 42%,
+    61% 55%,
+    50% 65%,
+    39% 55%,
+    32% 42%,
+    30% 30%,
+    32% 18%,
+    39% 7%
+  );
 }
-
     @keyframes twinkle {
       0%, 100% { opacity: 0.2; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.5); }
