@@ -1,93 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>meowl</title>
+  <meta charset="UTF-8">
+  <title>Meowl Sparkle Sync</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: #430bb4; /* Flat night color */
-      font-family: 'Comic Sans MS', cursive;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      background-color: #1a0033; /* Purple night */
       overflow: hidden;
+      font-family: monospace;
+      color: white;
     }
 
-    .bubble {
-      /* Removed background, padding, border, and shadow */
-      animation: float 6s ease-in-out infinite;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3em;
-      color: #d6c9ff; /* Soft lavender */
-      text-shadow: none;
-      margin: 0;
-    }
-
-    p {
-      font-size: 1.2em;
-      color: #eeeeee; /* Light gray for better contrast */
-      margin: 10px 0 20px;
-    }
-
-    .meowl-img {
-      width: 700px;
-      transition: transform 0.4s ease;
-      border-radius: 20px;
-      box-shadow: none;
-    }
-
-    .meowl-img:hover {
-      transform: scaleX(1.2) scaleY(0.8);
-    }
-
-    .meowl-img:active {
-      transform: scaleX(0.8) scaleY(1.2);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-  .sparkle {
+    #main-meowl, #side-meowl {
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #fff;
-      animation: twinkle 1.5s infinite ease-in-out;
+      width: 100px;
+      height: auto;
+      transition: transform 0.3s ease;
+      pointer-events: none;
     }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.5); }
+
+    #main-meowl {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #side-meowl {
+      top: 50%;
+      left: 20%;
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0.6;
+    }
+
+    #status {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 16px;
+      background: rgba(0,0,0,0.4);
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+
+    .active {
+      opacity: 1;
+      animation: bounce 1s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, -50%) scale(0.5); }
+      50% { transform: translate(-50%, -48%) scale(0.55); }
     }
   </style>
 </head>
 <body>
-  <div class="bubble">
-    <h1>meowl</h1>
-    <p>meowl but awesome i think</p>
-    <img src="meowl.jpg" class="meowl-img" alt="Meowl" />
-  </div>
 
-  <!-- Sparkles -->
+  <img id="main-meowl" src="meowl.png" alt="Main Meowl">
+  <img id="side-meowl" src="meowl.png" alt="Side Meowl">
+  <div id="status">they're doing nothing</div>
+
   <script>
-    for (let i = 0; i < 50; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.top = `${Math.random() * 100}vh`;
-      sparkle.style.left = `${Math.random() * 100}vw`;
-      sparkle.style.animationDelay = `${Math.random() * 2}s`;
-      document.body.appendChild(sparkle);
-    }
+    const mainMeowl = document.getElementById('main-meowl');
+    const sideMeowl = document.getElementById('side-meowl');
+    const status = document.getElementById('status');
+
+    let isFollowing = false;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'd') {
+        isFollowing = true;
+        sideMeowl.classList.add('active');
+        status.textContent = "side Meowl is now following!";
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      mainMeowl.style.left = `${x}px`;
+      mainMeowl.style.top = `${y}px`;
+
+      if (isFollowing) {
+        sideMeowl.style.left = `${x - 150}px`; // offset to the left
+        sideMeowl.style.top = `${y}px`;
+      }
+    });
   </script>
+
 </body>
 </html>
