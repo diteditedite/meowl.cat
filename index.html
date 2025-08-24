@@ -2,93 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>meowl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meowl</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: #430bb4; /* Flat night color */
+      background: #0a0a0a;
       font-family: 'Comic Sans MS', cursive;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       overflow: hidden;
     }
 
     .bubble {
-      /* Removed background, padding, border, and shadow */
-      animation: float 6s ease-in-out infinite;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3em;
-      color: #d6c9ff; /* Soft lavender */
-      text-shadow: none;
-      margin: 0;
-    }
-
-    p {
-      font-size: 1.2em;
-      color: #eeeeee; /* Light gray for better contrast */
-      margin: 10px 0 20px;
+      position: absolute;
+      bottom: 120px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 18px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
     }
 
     .meowl-img {
-      width: 700px;
-      transition: transform 0.4s ease;
-      border-radius: 20px;
-      box-shadow: none;
-    }
-
-    .meowl-img:hover {
-      transform: scaleX(1.2) scaleY(0.8);
-    }
-
-    .meowl-img:active {
-      transform: scaleX(0.8) scaleY(1.2);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .sparkle {
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #fff;
-      animation: twinkle 1.5s infinite ease-in-out;
+      bottom: 60px;
+      right: 30px;
+      width: 180px;
+      transition: transform 0.3s ease;
     }
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.5); }
+    .slider-container {
+      position: absolute;
+      bottom: 40px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-family: 'Comic Sans MS', cursive;
+      color: #eee;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .slider-container label {
+      margin-right: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="bubble">
-    <h1>meowl</h1>
-    <p>meowl but awesome i think</p>
-    <img src="meowl.jpg" class="meowl-img" alt="Meowl" />
+  <div class="bubble">Meowl is watching you 👀</div>
+  <img src="meowl.png" alt="Meowl" class="meowl-img" />
+
+  <div class="slider-container">
+    <label for="meowl-shape">Shape:</label>
+    <select id="meowl-shape">
+      <option value="1,1">Regular</option>
+      <option value="1,1.5">Tall</option>
+      <option value="1.5,1">Wide</option>
+    </select>
   </div>
 
-  <!-- Sparkles -->
   <script>
-    for (let i = 0; i < 50; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.top = `${Math.random() * 100}vh`;
-      sparkle.style.left = `${Math.random() * 100}vw`;
-      sparkle.style.animationDelay = `${Math.random() * 2}s`;
-      document.body.appendChild(sparkle);
-    }
+    document.getElementById('meowl-shape').addEventListener('change', function() {
+      const [scaleX, scaleY] = this.value.split(',').map(Number);
+      const meowl = document.querySelector('.meowl-img');
+      meowl.style.transform = `scaleX(${scaleX}) scaleY(${scaleY})`;
+    });
   </script>
 </body>
 </html>
