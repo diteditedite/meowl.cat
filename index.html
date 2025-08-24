@@ -18,31 +18,29 @@
     }
 
     .bubble {
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 30px;
-      padding: 40px;
-      box-shadow: none; /* Removed pink glow */
-      text-align: center;
+      /* Removed background, padding, border, and shadow */
       animation: float 6s ease-in-out infinite;
+      text-align: center;
     }
 
     h1 {
       font-size: 3em;
-      color: #d6c9ff; /* Soft lavender for night tone */
-      text-shadow: none; /* Removed white glow */
+      color: #d6c9ff; /* Soft lavender */
+      text-shadow: none;
+      margin: 0;
     }
 
     p {
       font-size: 1.2em;
-      color: #555;
+      color: #eeeeee; /* Light gray for better contrast */
+      margin: 10px 0 20px;
     }
 
     .meowl-img {
       width: 700px;
-      margin-top: 20px;
       transition: transform 0.4s ease;
       border-radius: 20px;
-      box-shadow: none; /* Removed pink glow */
+      box-shadow: none;
     }
 
     .meowl-img:hover {
