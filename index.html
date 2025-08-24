@@ -32,20 +32,35 @@
       transition: transform 0.3s ease;
     }
 
-    .slider-container {
-      position: absolute;
-      bottom: 40px;
-      right: 30px;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 10px 15px;
-      border-radius: 12px;
-      font-family: 'Comic Sans MS', cursive;
-      color: #eee;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    /* Hover pulse effect */
+    .meowl-img:hover {
+      animation: pulseWide 0.6s infinite alternate;
     }
 
-    .slider-container label {
-      margin-right: 8px;
+    @keyframes pulseWide {
+      from {
+        transform: scaleX(1);
+      }
+      to {
+        transform: scaleX(1.2);
+      }
+    }
+
+    /* Jiggle animation */
+    @keyframes jiggleUpDown {
+      0%   { transform: translateY(0); }
+      25%  { transform: translateY(-5px); }
+      50%  { transform: translateY(5px); }
+      75%  { transform: translateY(-3px); }
+      100% { transform: translateY(0); }
+    }
+
+    .jiggle {
+      animation: jiggleUpDown 0.4s ease;
+    }
+
+    .tall {
+      transform: scaleY(1.5);
     }
   </style>
 </head>
@@ -53,20 +68,18 @@
   <div class="bubble">Meowl is watching you 👀</div>
   <img src="meowl.png" alt="Meowl" class="meowl-img" />
 
-  <div class="slider-container">
-    <label for="meowl-shape">Shape:</label>
-    <select id="meowl-shape">
-      <option value="1,1">Regular</option>
-      <option value="1,1.5">Tall</option>
-      <option value="1.5,1">Wide</option>
-    </select>
-  </div>
-
   <script>
-    document.getElementById('meowl-shape').addEventListener('change', function() {
-      const [scaleX, scaleY] = this.value.split(',').map(Number);
-      const meowl = document.querySelector('.meowl-img');
-      meowl.style.transform = `scaleX(${scaleX}) scaleY(${scaleY})`;
+    const meowl = document.querySelector('.meowl-img');
+
+    meowl.addEventListener('click', () => {
+      meowl.classList.remove('tall'); // Reset if already tall
+      meowl.classList.add('jiggle');
+
+      // After jiggle ends, stretch tall
+      setTimeout(() => {
+        meowl.classList.remove('jiggle');
+        meowl.classList.add('tall');
+      }, 400);
     });
   </script>
 </body>
