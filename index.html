@@ -37,6 +37,22 @@
       color: #555;
     }
 
+    .meowl-img {
+      width: 300px;
+      margin-top: 20px;
+      transition: transform 0.4s ease;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+    }
+
+    .meowl-img:hover {
+      transform: scaleX(1.2) scaleY(0.8);
+    }
+
+    .meowl-img:active {
+      transform: scaleX(0.8) scaleY(1.2);
+    }
+
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
@@ -62,6 +78,7 @@
   <div class="bubble">
     <h1>🐾 Meowl.cat 🐾</h1>
     <p>meowl but awesome i think</p>
+    <img src="meowl.jpg" class="meowl-img" alt="Meowl" />
   </div>
 
   <!-- Sparkles -->
