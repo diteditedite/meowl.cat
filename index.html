@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>meowl.cat</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top left, #ffe0f0, #d0cfff);
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .bubble {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 30px;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+      text-align: center;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ff69b4;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+      animation: twinkle 1.5s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="bubble">
+    <h1>🐾 Meowl.cat 🐾</h1>
+    <p>meowl but awesome i think</p>
+  </div>
+
+  <!-- Sparkles -->
+  <script>
+    for (let i = 0; i < 50; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.top = `${Math.random() * 100}vh`;
+      sparkle.style.left = `${Math.random() * 100}vw`;
+      sparkle.style.animationDelay = `${Math.random() * 2}s`;
+      document.body.appendChild(sparkle);
+    }
+  </script>
+</body>
+</html>
