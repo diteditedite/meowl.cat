@@ -57,14 +57,13 @@
     }
 
     .sparkle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #fff;
-      animation: twinkle 1.5s infinite ease-in-out;
-    }
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  animation: twinkle 1.5s infinite ease-in-out;
+  clip-path: path('M10 30 A20 20 0 0 1 50 30 Q50 60 25 90 Q0 60 0 30 A20 20 0 0 1 10 30 Z');
+}
 
     @keyframes twinkle {
       0%, 100% { opacity: 0.2; transform: scale(1); }
