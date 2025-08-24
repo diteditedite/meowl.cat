@@ -7,7 +7,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #430bb4; /* Flat night color */
+      background-color: #430bb4; /* Purple night */
       font-family: 'Comic Sans MS', cursive;
       display: flex;
       flex-direction: column;
@@ -48,24 +48,6 @@
       transform: scaleX(0.8) scaleY(1.2);
     }
 
-    .mini-meowl {
-      position: absolute;
-      width: 350px; /* Half the size */
-      top: 50%;
-      left: calc(50% - 400px); /* Offset to the left of center */
-      transform: translate(-50%, -50%);
-      border-radius: 20px;
-      transition: transform 0.4s ease;
-    }
-
-    .mini-meowl:hover {
-      transform: scaleX(1.2) scaleY(0.8);
-    }
-
-    .mini-meowl:active {
-      transform: scaleX(0.8) scaleY(1.2);
-    }
-
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
@@ -92,7 +74,6 @@
     <h1>meowl</h1>
     <p>meowl but awesome i think</p>
     <img src="meowl.jpg" class="meowl-img" alt="Meowl" />
-    <img src="meowl.jpg" class="mini-meowl" alt="Mini Meowl" />
   </div>
 
   <script>
